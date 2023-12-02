@@ -8,22 +8,30 @@ class Controller
 {
     public function route ():void 
     {
-        if (isset($_GET['controller'])){
-            switch ($_GET['controller']){
-                case 'galery':
-                    var_dump('page galery');
+        try {
+            if (isset($_GET['controller'])){
+                switch ($_GET['controller']){
+                    case 'galery':
+                        var_dump('page galery');
+                        break;
+                    case 'home':
+                        $homeController = new HomeController;
+                        $homeController->route();
+                        break;
+                    default:
+                        throw new \Exception("le controlleur n'existe pas");
                     break;
-                case 'home':
-                    $homeController = new HomeController;
-                    $homeController->route();
-                    break;
-                default:
-
-                break;
+                }
+            } else {
+                $homeController = new HomeController;
+                $homeController->home();
             }
-        } else {
-            
+        } catch (\Exception $e) {
+            $this->render('error/default', [
+                'error' => $e->getMessage(),
+            ]);
         }
+       
     }
 
     protected function render(string $path, array $params = []):void
@@ -38,7 +46,9 @@ class Controller
                 require_once $filePath;
             }
         } catch(\Exception $e) {
-            echo $e->getMessage();
+            $this->render('error/default', [
+                'error' => $e->getMessage(),
+            ]);
         };
     }
 }
