@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GaleryController;
+namespace App\Controller;
 
 use App\Controller\Controller;
 
@@ -10,8 +10,8 @@ class GaleryController extends Controller
     {
         if (isset($_GET['action'])){
             switch ($_GET['action']){
-                case 'show':
-
+                case 'read':
+                    $this->read(); 
                     break;
                 case 'contact':
 
@@ -25,8 +25,8 @@ class GaleryController extends Controller
         }
     }
 
-    protected function about()
+    protected function read()
     {
-        $this->render('page/about');
+        $this->render('galery/read');
     }
 }

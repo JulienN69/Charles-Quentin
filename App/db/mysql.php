@@ -34,14 +34,21 @@ class Mysql
        if (isset ($conf['db_host'])){
         $this->db_host = $conf['db_host'];
        } 
-
     }
 
-    public static function getInstance()
+    public static function getInstance():self
     {
         if (is_null(self::$_instance)){
             self::$_instance = new Mysql();
         }
         return self::$_instance;
+    }
+
+    public function getPDO():\PDO
+    {
+        if (is_null($this->pdo)) {
+            $this->pdo = new \PDO('mysql:dbname=' . $this->db_name . ';charset=utf8;host=' . $this->db_host.':'.$this->db_port, $this->db_user, $this->db_password);
+        }
+        return $this->pdo;  
     }
 }

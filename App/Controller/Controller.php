@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Controller\HomeController;
+use App\Controller\ContactController;
+use App\Controller\PrestationController;
+use App\Controller\GaleryController;
 
 class Controller 
 {
@@ -12,11 +15,20 @@ class Controller
             if (isset($_GET['controller'])){
                 switch ($_GET['controller']){
                     case 'galery':
-                        var_dump('page galery');
+                        $galeryController = new GaleryController;
+                        $galeryController->route();
+                        break;
+                    case 'contact':
+                        $contactController = new ContactController;
+                        $contactController->route();
                         break;
                     case 'home':
                         $homeController = new HomeController;
                         $homeController->route();
+                        break;
+                    case 'prestation':
+                        $prestationController = new PrestationController;
+                        $prestationController->route();
                         break;
                     default:
                         throw new \Exception("le controlleur n'existe pas");

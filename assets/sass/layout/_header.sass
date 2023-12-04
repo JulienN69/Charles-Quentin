@@ -1,16 +1,26 @@
-
+@use "../abstracts/_variables" as var
     
-.header__nav
+.home
+    height: 100vh
+    overflow: hidden
+
+.menu
     display: flex
     justify-content: center
     align-items: center
-    background-color: lightblue
-    height: 10rem
-
+    height: 8rem
+    width: 1200px
+    margin: 0 auto
+    ul
+        display: flex
+        justify-content: space-between
+    
     &__li
         font-size: 2rem
         padding: 2rem
         text-transform: uppercase
-
-    &__li--logo
-        width: 5rem
+        a
+            color: var.$colorGrey
+        
+        &--logo
+            width: 8rem

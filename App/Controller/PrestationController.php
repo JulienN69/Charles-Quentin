@@ -21,7 +21,7 @@ class PrestationController extends Controller
                     
                     break;
                 case 'read':
-                    
+                    $this->read();
                     break;
                 default:
                     throw new \Exception("cette action n'existe pas :".$_GET['action']);
@@ -30,13 +30,16 @@ class PrestationController extends Controller
         } else {
             throw new \Exception("aucune action n'est détectée");
         }
-    } catch (\Exception $e) {
-        $this->render('error/default', [
-            'error' => $e->getMessage(),
-        ]);
+        } catch (\Exception $e) {
+            $this->render('error/default', [
+                'error' => $e->getMessage(),
+            ]);
+        }        
     }
-   
-        
+
+    protected function read()
+    {
+        $this->render('prestation/read');
     }
 
     protected function show()
