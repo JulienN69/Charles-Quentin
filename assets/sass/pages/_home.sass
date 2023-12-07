@@ -1,11 +1,8 @@
-@use "../abstracts/_mixins" as mixin
-@use "../abstracts/_variables" as var
-
-
+@use "../abstracts/_all" as abstracts
 
 .home
     &__img
-        @include mixin.coverImage($opacity: 1) 
+        @include abstracts.coverImage($opacity: 1) 
     
     &__title
         position: absolute

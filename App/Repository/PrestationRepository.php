@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use PDO;
 use App\db\Mysql;
 use App\Entity\Prestation;
 use App\Tools\StringTools;
@@ -13,7 +14,7 @@ class PrestationRepository
         $mysql = Mysql::getInstance();
 
         $pdo = $mysql->getPDO();
-        $query = $pdo->prepare('SELECT * FROM prestation WHERE id = :id');
+        $query = $pdo->prepare('SELECT * FROM prestations WHERE id = :id');
         $query->bindValue(':id', $id, $pdo::PARAM_INT);
         $query->execute();
         $book = $query->fetch($pdo::FETCH_ASSOC);
@@ -24,5 +25,17 @@ class PrestationRepository
         }
 
         return $prestationEntity;
+    }
+
+    public function findAll()
+    {
+        $mysql = Mysql::getInstance();
+
+        $pdo = $mysql->getPDO();
+        $query = $pdo->prepare('SELECT * FROM prestations');
+        $query->execute();
+        $prestations = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $prestations;
     }
 }

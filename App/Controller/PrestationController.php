@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
+use App\db\Mysql;
+use App\Repository\PrestationRepository;
 
 class PrestationController extends Controller
 {
@@ -39,7 +41,11 @@ class PrestationController extends Controller
 
     protected function read()
     {
-        $this->render('prestation/read');
+        $prestationsRepository = new PrestationRepository;
+        $prestations = $prestationsRepository->findAll();
+        $this->render('prestation/read', [
+            'prestations' => $prestations
+        ]);
     }
 
     protected function show()
