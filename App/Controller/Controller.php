@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Controller\HomeController;
 use App\Controller\ContactController;
 use App\Controller\PrestationController;
-use App\Controller\GaleryController;
+use App\Controller\GalleryController;
 
 class Controller 
 {
@@ -14,9 +14,9 @@ class Controller
         try {
             if (isset($_GET['controller'])){
                 switch ($_GET['controller']){
-                    case 'galery':
-                        $galeryController = new GaleryController;
-                        $galeryController->route();
+                    case 'gallery':
+                        $galleryController = new GalleryController;
+                        $galleryController->route();
                         break;
                     case 'contact':
                         $contactController = new ContactController;

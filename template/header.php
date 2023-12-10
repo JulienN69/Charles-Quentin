@@ -13,7 +13,7 @@
     <body>
         <header class="menu">
             <ul>
-                <li class="menu__li"><a href="?controller=galery&action=read">Galerie</a></li>
+                <li class="menu__li"><a href="?controller=gallery&action=read">Galerie</a></li>
                 <li class="menu__li"><a href="?controller=contact&action=contact">Contact</a></li>
             </ul>
             <div class="menu__li">

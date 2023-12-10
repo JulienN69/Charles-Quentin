@@ -4,7 +4,7 @@ namespace App\Entity;
 
 class Prestation 
 {
-    protected ?int $id = null;
+    protected int $id;
     protected string $title;
     protected string $description;
     protected float $price;

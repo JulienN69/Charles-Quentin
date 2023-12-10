@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Gallery;
 use App\Controller\Controller;
+use App\Repository\GalleryRepository;
+use App\Repository\PhotoRepository;
 
-class GaleryController extends Controller
+class GalleryController extends Controller
 {
     public function route ():void 
     {
@@ -27,6 +30,15 @@ class GaleryController extends Controller
 
     protected function read()
     {
-        $this->render('galery/read');
+        $photoRepository = new PhotoRepository;
+        $photos = $photoRepository->findAllByGalleryId(1);
+
+        $galleryRepository = new GalleryRepository;
+        $gallery = $galleryRepository->findAll();
+        $this->render('gallery/read', [
+            'gallery' => $gallery,
+            'photos' => $photos
+        ]);
+
     }
 }

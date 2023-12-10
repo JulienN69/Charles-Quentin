@@ -1,0 +1,26 @@
+@use "../abstracts/_all" as abstracts
+
+.gallery-cover__image
+    @include abstracts.coverImage($opacity: 0.4)
+
+.gallery-nav
+    display: flex
+    justify-content: space-between
+    @include abstracts.position($top: 18%)
+
+    &__a
+        font-size: 1.8rem
+        padding: 1rem
+        margin: 1rem
+
+.gallery-photo
+    @include abstracts.position($top: 50%)
+    width: 1200px
+    display: flex
+    justify-content: center
+
+    &__img
+        width: 10rem
+        object-fit: cover
+        padding: 2rem
+
