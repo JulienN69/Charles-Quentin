@@ -5,7 +5,10 @@
 
 <?php
 foreach ($gallery as $gall) {
-    echo '<a href="#" class="gallery-nav__a">'. $gall['name'] . '</a>';
+    echo '<a 
+        href="?controller=gallery&action=read&category='.$gall['gallery_id'].'"
+        data-category-id="'.$gall['gallery_id'].'" 
+        class="gallery-nav__a gallery-js-'.$gall['name'].'">'. $gall['name'] . '</a>';
 }
 ?>
 
