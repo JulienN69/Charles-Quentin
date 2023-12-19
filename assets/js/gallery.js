@@ -46,14 +46,20 @@ const loadPhotos = async (categoryId) => {
 // ------------ fonction d'affichage des photos -------------
 
 const displayPhotos = (photos, categoryId) => {
-  galleryPhotoContainer.innerHTML = "";
+  const photosList = document.querySelectorAll(".gallery-photo__container");
+  photosList.forEach((photo) => photo.remove());
+  // galleryPhotoContainer.innerHTML = "";
   photos.forEach((photo) => {
     const baseImageURL = baseImageURLs[categoryId];
-    const imgElement = document.createElement("img");
+    const container = document.createElement("div");
+    container.classList.add("gallery-photo__container");
 
+    const imgElement = document.createElement("img");
     imgElement.src = `${baseImageURL}${photo.name}`;
     imgElement.alt = "image";
     imgElement.classList.add("gallery-photo__img");
-    galleryPhotoContainer.appendChild(imgElement);
+
+    container.appendChild(imgElement);
+    galleryPhotoContainer.appendChild(container);
   });
 };

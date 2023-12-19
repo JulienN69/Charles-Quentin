@@ -1,28 +1,47 @@
 <?php require_once _ROOTPATH_.'/template/header.php' ?>
 
-<img src="assets\images\couple_foret.jpg" alt="image" class="gallery-cover__image">
-<nav class="gallery-nav">
+<main>
+    <section class="gallery">
 
-<?php
-foreach ($gallery as $gall) {
-    echo '<a 
-        href="?controller=gallery&action=read&category='.$gall['gallery_id'].'"
-        data-category-id="'.$gall['gallery_id'].'" 
-        class="gallery-nav__a gallery-js-'.$gall['name'].'">'. $gall['name'] . '</a>';
-}
-?>
+        <nav class="gallery-nav">
+            <?php
+            foreach ($gallery as $gall) {
+                echo '<a 
+                    href="?controller=gallery&action=read&category='.$gall['gallery_id'].'"
+                    data-category-id="'.$gall['gallery_id'].'" 
+                    class="gallery-nav__a gallery-js-'.$gall['name'].'">'. $gall['name'] . '</a>';
+            }
+            ?>
+        </nav>
+  
+    
+        <div class="gallery-photos">
+            <div class="gallery-photo">
 
-</nav>
+                <?php
+                
+                foreach ($photos as $photo) {
+                    echo '<div class="gallery-photo__container">';
+                    echo '<img src="assets/images/mariage/' . $photo['name'] .'" alt="image" class="gallery-photo__img"></img>';
+                    echo '</div>';
+                }
+            
+                ?>
+            </div>
+            <div class="arrow-container">
+                <div class="arrow-container__btn">
+                    <a class="arrow-js-right" >&lt;</a>
+                </div>
+                <div class="arrow-container__btn">
+                    <a class="arrow-js-left">&gt;</a>
+                </div>
+            </div>
+            
 
-<div class="gallery-photo">
-<?php
-foreach ($photos as $photo) {
-    echo '<img src="assets/images/mariage/' . $photo['name'] .'" alt="image" class="gallery-photo__img"></img>';
-}
-?>
-</div>
+        </div>
+    </section>
 
-    </main>
+</main>
 
             <footer class="footer">
                 <a href="#">
@@ -37,5 +56,6 @@ foreach ($photos as $photo) {
                 </a>
             </footer>
             <script src="assets/js/gallery.js"></script>
+            <script src="assets/js/photos.js"></script>
         </body>
 </html>

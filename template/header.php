@@ -23,4 +23,3 @@
                 <li class="menu__li"><a href="?controller=prestation&action=read">Tarif et prestations</a></li>
             </ul>
         </header>
-        <main>
