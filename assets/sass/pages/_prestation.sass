@@ -5,10 +5,7 @@
         @include abstracts.coverImage($opacity: 0.4)
     &__title
         @include abstracts.position()
-        text-transform: uppercase
-        color: black
-        font-size: 2rem
-        font-weight: normal
+        @include abstracts.title()
 
 .grid-container
     @include abstracts.position($top: 58%)

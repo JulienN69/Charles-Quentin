@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Controller\HomeController;
+use App\Controller\AdminController;
 use App\Controller\ContactController;
-use App\Controller\PrestationController;
 use App\Controller\GalleryController;
+use App\Controller\PrestationController;
 
 class Controller 
 {
@@ -29,6 +30,10 @@ class Controller
                     case 'prestation':
                         $prestationController = new PrestationController;
                         $prestationController->route();
+                        break;
+                    case 'backoffice':
+                        $adminController = new AdminController;
+                        $adminController->route();
                         break;
                     default:
                         throw new \Exception("le controlleur n'existe pas");

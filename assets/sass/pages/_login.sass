@@ -1,0 +1,12 @@
+@use "../abstracts/_all" as abstracts
+
+.login
+    &__img
+        @include abstracts.coverImage($opacity: 0.4)
+
+    &__title
+        @include abstracts.position()
+        @include abstracts.title()
+    
+    &__form
+        @include abstracts.position(35%)
