@@ -31,7 +31,7 @@ class Controller
                         $prestationController = new PrestationController;
                         $prestationController->route();
                         break;
-                    case 'backoffice':
+                    case 'admin':
                         $adminController = new AdminController;
                         $adminController->route();
                         break;

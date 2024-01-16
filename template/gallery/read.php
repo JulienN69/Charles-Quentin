@@ -1,6 +1,6 @@
 <?php require_once _ROOTPATH_.'/template/header.php' ?>
 
-<main>
+<main class="gallery--main">
     <section class="gallery">
 
         <nav class="gallery-nav">

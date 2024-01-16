@@ -3,20 +3,19 @@
 require_once _ROOTPATH_.'/template/header.php';
 use App\HTML\Form;
 use App\Entity\User;
+use App\Repository\UserRepository;
 
 $user = new User();
 $errors = [];
 
-// if (!empty($_POST)) {
-//     if (isset($_POST['email'], $_POST['password']) && !empty($_POST['email']) && !empty($_POST['password'])){
-
-//     }
-// } 
 if (!empty($_POST)) {
+    $user->setEmail($_POST['email']);
     if (empty($_POST['email']) || empty($_POST['password'])){
-        $errors['password'] = ['Identifiant ou mot de passe incorrect'];
+        $errors['password'] = 'Identifiant ou mot de passe incorrect';
     }
 } 
+$user = new UserRepository;
+$user->findUserByEmail($_POST['email']);
 
 $form = new Form($user, $errors);
 

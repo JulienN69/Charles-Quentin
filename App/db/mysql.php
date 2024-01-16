@@ -16,24 +16,24 @@ class Mysql
     {
         $conf = require_once _ROOTPATH_.'/config.php';
 
-       if (isset ($conf['db_name'])){
-        $this->db_name = $conf['db_name'];
-       } 
+        if (isset ($conf['db_name'])){
+            $this->db_name = $conf['db_name'];
+        } 
 
-       if (isset ($conf['db_user'])){
-        $this->db_user = $conf['db_user'];
-       } 
+        if (isset ($conf['db_user'])){
+            $this->db_user = $conf['db_user'];
+        } 
 
-       if (isset ($conf['db_password'])){
-        $this->db_password = $conf['db_password'];
-       } 
-       if (isset ($conf['db_port'])){
-        $this->db_port = $conf['db_port'];
-       } 
+        if (isset ($conf['db_password'])){
+            $this->db_password = $conf['db_password'];
+        } 
+        if (isset ($conf['db_port'])){
+            $this->db_port = $conf['db_port'];
+        } 
 
-       if (isset ($conf['db_host'])){
-        $this->db_host = $conf['db_host'];
-       } 
+        if (isset ($conf['db_host'])){
+            $this->db_host = $conf['db_host'];
+        } 
     }
 
     public static function getInstance():self

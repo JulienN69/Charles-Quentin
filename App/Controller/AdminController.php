@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\Controller;
 use App\Repository\GalleryRepository;
+use App\Repository\PrestationRepository;
 
 class AdminController extends Controller
 {
@@ -15,8 +16,14 @@ class AdminController extends Controller
                 case 'login':
                     $this->login();
                     break;
-                case 'index':
-                    $this->index();
+                case 'home':
+                    $this->home();
+                    break;
+                case 'gallery':
+                    $this->gallery();
+                    break;
+                case 'prestations':
+                    $this->prestations();
                     break;
                 default:
                     throw new \Exception("cette action n'existe pas :".$_GET['action']);
@@ -38,13 +45,34 @@ class AdminController extends Controller
     {
         $this->render('admin/login');
     }
-    protected function index()
+
+    protected function home()
     {
         $galleryRepo = new GalleryRepository;
         $gallery = $galleryRepo->findAll();
 
-        $this->render('admin/index', [
+        $this->render('admin/home', [
             'gallery' => $gallery
+        ]);
+    }
+
+    protected function gallery()
+    {
+        $galleryRepo = new GalleryRepository;
+        $gallery = $galleryRepo->findAll();
+
+        $this->render('admin/gallery/index', [
+            'gallery' => $gallery
+        ]);
+    }
+
+    protected function prestations()
+    {
+        $prestationsRepo = new PrestationRepository;
+        $prestations = $prestationsRepo->findAll();
+
+        $this->render('admin/prestations/index', [
+            'prestations' => $prestations
         ]);
     }
 }

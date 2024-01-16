@@ -195,7 +195,7 @@ li {
     left: 50%;
   }
 }
-main::before {
+.gallery--main::before {
   content: " ";
   display: block;
   position: absolute;
@@ -312,4 +312,101 @@ main::before {
   left: 50%;
   top: 35%;
   transform: translate(-50%, -50%);
+}
+
+.dashboard {
+  display: flex;
+}
+.dashboard::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  background-image: url("../../images/couple-g4b1e56824_640.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+
+.dashboardMenu {
+  position: relative;
+  background-color: #424952;
+  height: 100vh;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 1.5rem;
+}
+.dashboardMenu__home, .dashboardMenu__items--div {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  padding-bottom: 2rem;
+}
+.dashboardMenu__home a, .dashboardMenu__items--div a {
+  color: white;
+  font-size: 1.7rem;
+  padding: 0.5rem;
+}
+.dashboardMenu__home img, .dashboardMenu__items--div img {
+  padding: 0.5rem;
+}
+.dashboardMenu__items--div {
+  padding-bottom: 0;
+}
+
+.dashboardContent {
+  width: 100%;
+}
+
+.icon {
+  width: 2.5rem;
+}
+
+.dashboardContent {
+  width: 100%;
+}
+.dashboardContent__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  position: relative;
+  width: 80%;
+}
+.dashboardContent__grid--item {
+  display: grid;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: solid red 0.1rem;
+  grid-template-columns: 20% 20% 1fr;
+  cursor: pointer;
+}
+.dashboardContent__grid--item:hover {
+  background-color: #e6e6e6;
+}
+.dashboardContent__grid--item div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+.title, .price, .description {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }/*# sourceMappingURL=main.css.map */
