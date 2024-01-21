@@ -16,21 +16,29 @@
 
         <section class="dashboardMenu">
             <div class="dashboardMenu__home">
-                <img src="assets/images/icons/accueil.png" alt="image" class="icon">
-                <a href="?controller=admin&action=home">Dashboard</a>
+                <a href="?controller=admin&action=home" class="dashboardMenu__home--imgLink">
+                    <img src="assets/images/icons/accueil.png" alt="image" class="icon">
+                </a>
+                <a href="?controller=admin&action=home" class="dashboardMenu__home--link">Dashboard</a>
             </div>
             <div class="dashboardMenu__items">
                 <div class="dashboardMenu__items--div">
-                    <img src="assets/images/icons/fichier.png" alt="image" class="icon">
-                    <a href="?controller=admin&action=prestations">Prestations</a>
+                    <a href="?controller=admin&action=prestations&subaction=read" class="dashboardMenu__home--imgLink">
+                        <img src="assets/images/icons/fichier.png" alt="image" class="icon">
+                    </a>
+                    <a href="?controller=admin&action=prestations&subaction=read" class="dashboardMenu__home--link">Prestations</a>
                 </div>
                 <div class="dashboardMenu__items--div">
-                    <img src="assets/images/icons/galerie-dimages.png" alt="image" class="icon">
-                    <a href="?controller=admin&action=gallery">Galeries</a>
+                    <a href="?controller=admin&action=gallery" class="dashboardMenu__home--imgLink">
+                        <img src="assets/images/icons/galerie-dimages.png" alt="image" class="icon">
+                    </a>
+                    <a href="?controller=admin&action=gallery" class="dashboardMenu__home--link">Galeries</a>
                 </div>
                 <div class="dashboardMenu__items--div">
-                    <img src="assets/images/icons/camera.png" alt="image" class="icon">
-                    <a href="#">Photos</a>
+                    <a href="#" class="dashboardMenu__home--imgLink">
+                        <img src="assets/images/icons/camera.png" alt="image" class="icon">
+                    </a>
+                    <a href="#" class="dashboardMenu__home--link">Photos</a>
                 </div>
             </div>
 

@@ -47,14 +47,24 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   arrowBtnRight.addEventListener("click", () => {
-    if (!isAnimating && rightButtonEnabled) {
-      cumulativeTranslation += 33;
+    if (!isAnimating && rightButtonEnabled && compteur > 0) {
+      let margin = 60;
+      let marginPercentage = ((2 * margin) / window.innerWidth) * 100;
+
+      // ------- condition ternaire un peu longue attention :
+      cumulativeTranslation +=
+        window.innerWidth < 1400
+          ? 100 + marginPercentage
+          : 33 + marginPercentage;
+
       compteur -= 1;
       console.log(compteur);
 
       isAnimating = true;
       rightButtonEnabled = false;
+
       galleryPhotos.style.transition = "transform 0.4s ease-out";
+
       galleryPhotos.style.transform = `translateX(${cumulativeTranslation}%)`;
       galleryPhotos.addEventListener("transitionend", handleAnimationEnd);
     }
@@ -62,9 +72,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   arrowBtnLeft.addEventListener("click", () => {
     if (!isAnimating && leftButtonEnabled) {
-      cumulativeTranslation -= 33;
+      let margin = 60;
+      let marginPercentage = ((2 * margin) / window.innerWidth) * 100;
+
+      // ------- condition ternaire un peu longue attention :
+      cumulativeTranslation -=
+        window.innerWidth < 1400
+          ? 100 + marginPercentage
+          : 33 + marginPercentage;
+
       compteur += 1;
-      console.log(compteur);
       isAnimating = true;
       leftButtonEnabled = false;
       galleryPhotos.style.transition = "transform 0.4s ease-out";

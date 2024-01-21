@@ -15,13 +15,6 @@ class PrestationController extends Controller
             switch ($_GET['action']){
                 case 'show':
                     $this->show();
-                    break;
-                case 'delete':
-                    
-                    break;
-                case 'update':
-                    
-                    break;
                 case 'read':
                     $this->read();
                     break;

@@ -39,10 +39,15 @@ class Controller
                         throw new \Exception("le controlleur n'existe pas");
                     break;
                 }
-            } else {
+            } else if (isset($_GET['login'])) {
+                $adminController = new AdminController;
+                $adminController->route();
+                return;
+            }
+            else {
                 $homeController = new HomeController;
                 $homeController->home();
-            }
+            } 
         } catch (\Exception $e) {
             $this->render('error/default', [
                 'error' => $e->getMessage(),

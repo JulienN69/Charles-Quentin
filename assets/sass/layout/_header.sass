@@ -17,11 +17,15 @@
     ul
         display: flex
         justify-content: space-between
+        @include abstracts.max-width(900px)
+            display: none
     
     &__li
         font-size: 2rem
         padding: 2rem
         text-transform: uppercase
+        @include abstracts.max-width(900px)
+            display: none
         a
             color: abstracts.$colorGrey
         

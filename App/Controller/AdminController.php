@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
+use App\Controller\Admin\AdminPrestationsController;
 use App\Repository\GalleryRepository;
 use App\Repository\PrestationRepository;
 
@@ -23,14 +24,16 @@ class AdminController extends Controller
                     $this->gallery();
                     break;
                 case 'prestations':
-                    $this->prestations();
+                    $AdminPrestationsController = new AdminPrestationsController;
+                    $AdminPrestationsController->route();
                     break;
                 default:
                     throw new \Exception("cette action n'existe pas :".$_GET['action']);
                 break;
             }
         } else {
-            throw new \Exception("aucune action n'est détectée");
+            // throw new \Exception("aucune action n'est détectée");
+            $this->login();
         }
     } catch (\Exception $e) {
         $this->render('error/default', [

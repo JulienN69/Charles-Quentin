@@ -72,7 +72,7 @@ VALUES
 ("mariage.jpg", 1),
 ("mariage2.jpg", 1),
 ("mariage3.jpg", 1),
-("mariage4.jpg", 1);
+("mariage4.jpg", 1),
 ("bébé.jpg", 2),
 ("bébé2.jpg", 2),
 ("bébé3.jpg", 2),

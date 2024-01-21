@@ -2,7 +2,7 @@
 
 .home
     &__img
-        @include abstracts.coverImage($opacity: 1) 
+        @include abstracts.coverImage($opacity: 1, $height: 100%) 
     
     &__title
         position: absolute
@@ -20,4 +20,6 @@
             font-family: 'Nobile', sans-serif
             font-size: 4rem
             font-weight: normal
+            @include abstracts.max-width(900px)
+                font-size: 3rem
 

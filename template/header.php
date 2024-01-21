@@ -16,10 +16,23 @@
                 <li class="menu__li"><a href="?controller=gallery&action=read">Galerie</a></li>
                 <li class="menu__li"><a href="?controller=contact&action=contact">Contact</a></li>
             </ul>
-            <div class="menu__li">
+            <a href="?controller=home&action=home" class="menu__li">
                 <img src="assets\images\logo.jpg" alt="logo" class="menu__li--logo">
-            </div>
+            </a>
             <ul>
                 <li class="menu__li"><a href="?controller=prestation&action=read">Tarif et prestations</a></li>
             </ul>
+
+            <div class="menu-hamb" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div id="menu" class="menu-link">
+                <a href="?controller=gallery&action=read">Galerie</a>
+                <a href="?controller=contact&action=contact">Contact</a>
+                <a href="?controller=prestation&action=read">Tarif et prestations</a>
+            </div>
+
         </header>

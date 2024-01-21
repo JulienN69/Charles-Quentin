@@ -7,7 +7,8 @@ class Prestation
     protected int $id;
     protected string $title;
     protected string $description;
-    protected float $price;
+    protected string $price;
+    protected string $photo;
 
     /**
      * Get the value of price
@@ -85,6 +86,26 @@ class Prestation
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of photo
+     */ 
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set the value of photo
+     *
+     * @return  self
+     */ 
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
 
         return $this;
     }

@@ -1,0 +1,63 @@
+@use "../../abstracts/_all" as abstracts
+
+.dashboardContent 
+    width: 100%
+
+    &__grid
+        @include abstracts.grid()
+
+        &--header
+            display: flex
+            justify-content: space-between
+            padding: 1rem
+            border-bottom: solid red 0.1rem
+            font-size: 2rem
+            font-weight: bolder
+            @include abstracts.max-width(400px)
+                font-size: 1.5rem
+
+            a
+                &:hover
+                    text-decoration: none
+
+        &--item
+            display: grid
+            justify-content: space-between
+            padding: 1rem
+            border-bottom: solid red 0.1rem
+            grid-template-columns: 20% 20% 1fr 1fr
+            @include abstracts.max-width(1000px)
+                grid-template-columns: 30% 30% 1fr
+            @include abstracts.max-width(750px)
+                grid-template-columns: 30% 1fr
+            &:hover
+                background-color: darken(white, 5%)
+
+                a
+                    &:hover
+                        text-decoration: none
+
+            div
+                white-space: nowrap
+                overflow: hidden
+                text-overflow: ellipsis
+                max-width: 100%
+                font-size: 1.2rem
+                // pointer-events: none
+
+.titleHeader, .priceHeader, .descriptionHeader 
+    font-weight: bold
+
+.description, .descriptionHeader
+    @include abstracts.max-width(1000px)
+        display: none
+
+.price, .priceHeader
+    @include abstracts.max-width(750px)
+        display: none
+
+@media (max-width: 768px) 
+    .grid-container 
+        grid-template-columns: 1fr
+    
+

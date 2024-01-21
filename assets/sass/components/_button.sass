@@ -1,0 +1,19 @@
+@use "../abstracts/_all" as abstracts
+
+.addButton
+    @include abstracts.button()
+
+.deleteButton
+    @include abstracts.button($width: 7rem, $font-size: 1.3rem, $padding: 0.5rem)
+    margin: 0.2rem
+
+.updateButton
+    @include abstracts.button($width: 7rem, $font-size: 1.3rem, $padding: 0.5rem)
+    margin: 0.2rem
+
+.buttonContainer
+    display: flex
+    justify-content: flex-end
+    @include abstracts.max-width(600px)
+        flex-direction: column
+        align-items: center

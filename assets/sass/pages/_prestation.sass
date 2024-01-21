@@ -7,7 +7,7 @@
         @include abstracts.position()
         @include abstracts.title()
 
-.grid-container
+.prestation-grid-container
     @include abstracts.position($top: 58%)
     width: 1200px
     height: 70%
@@ -16,6 +16,14 @@
     display: grid
     grid-template-columns: 1fr 1fr 1fr
     gap: 2rem
+    @include abstracts.max-width(1400px)
+        width: 90%
+    @include abstracts.max-width(1200px)
+        grid-template-columns: 1fr 1fr 
+        gap: 1rem
+    @include abstracts.max-width(700px)
+        gap: 0.5rem
+        grid-template-columns: 1fr 
 
     &__item
         height: 90%
@@ -25,13 +33,13 @@
         overflow: hidden
         &:hover
             box-shadow: 10px 5px 20px abstracts.$colorGrey
-        &:hover .grid-container__item__description
+        &:hover .prestation-grid-container__item__description
             animation-name: hover-prestations 
             animation-duration: 400ms
             animation-timing-function: ease
             animation-fill-mode: forwards
             animation-delay: 0
-        &:hover .grid-container__item__text
+        &:hover .prestation-grid-container__item__text
             animation-name: hover-prestations-text 
             animation-duration: 400ms
             animation-timing-function: ease
@@ -53,14 +61,23 @@
             flex-direction: column
             left: 150%
             width: 100%
+            @include abstracts.max-width(700px)
+                top: 35%
 
             &--title
                 color: white
                 font-size: 2.5rem
                 padding: 0.5rem
+                @include abstracts.max-width(700px)
+                    font-size: 2rem
+                @include abstracts.max-width(400px)
+                    font-size: 1.5rem
+
             &--prices
-                @extend .grid-container__item__text--title
+                @extend .prestation-grid-container__item__text--title
                 font-size: 1.7rem
+                @include abstracts.max-width(1200px)
+                    display: none
 
         &__description
             position: absolute
@@ -70,14 +87,21 @@
             width: 100%
             color: white
             font-size: 1.2rem
-            height: 25%
             overflow: hidden
             display: flex
             align-items: center
+            @include abstracts.max-width(1200px)
+                max-height: 30%
+            @include abstracts.max-width(700px)
+                height: 30%
 
             p
                 max-width: 80%
                 margin: 0.2rem auto
+                @include abstracts.max-width(1200px)
+                    text-overflow: ellipsis
+                    overflow: hidden
+                    white-space: nowrap
 
 @keyframes hover-prestations
     0%
