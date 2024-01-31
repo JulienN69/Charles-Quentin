@@ -1,46 +1,64 @@
-
 <?php 
+require_once _ROOTPATH_.'/session.php';
 require_once _ROOTPATH_.'/template/header.php';
 use App\HTML\Form;
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Repository\NotFoundException;
+
 
 $user = new User();
 $errors = [];
 
 if (!empty($_POST)) {
     $user->setEmail($_POST['email']);
-    if (empty($_POST['email']) || empty($_POST['password'])){
-        $errors['password'] = 'Identifiant ou mot de passe incorrect';
-    }
+    $errors['password'] = 'Identifiant ou mot de passe incorrect';
+    
+    if(!empty($_POST['email']) && !empty($_POST['password'])) {
+        $u = new UserRepository;
+        try {
+            $user = $u->findUserByEmail($_POST['email']); 
+            if ($user !== null) {
+                if (password_verify($_POST['password'], $user->getPassword()) === true) {
+                    session_regenerate_id(true);
+                    $_SESSION['user'] = $user;
+                    if ($user->getRoles() === ['admin']) {
+                        header('location: ?controller=admin&action=home');
+                        exit;
+                    } else {
+                        header('location: ?controller=home&action=home');
+                        exit;
+                    }
+                }   else {
+                    $user->setPassword('');
+                }
+            }             
+        } catch (NotFoundException $e){    
+        }
+    } 
 } 
-$user = new UserRepository;
-$user->findUserByEmail($_POST['email']);
 
+var_dump($user);
 $form = new Form($user, $errors);
 
 ?>
 
 <img src="assets\images\family-ge2e36490b_1280.jpg" alt="image" class="login__img"> 
 
-    <h1 class="login__title">Connexion</h1>
-    <form method="POST" class="login__form">
-        <?php 
-        echo $form->input('email', 'adresse email');
-        echo $form->input('password', 'mot de passe');
-        ?>
+<h1 class="login__title">Connexion</h1>
 
-            <button type="submit">connexion</button>
-    </form>
+<?php  if(isset($_GET['forbidden'])):  ?>
+<div class="errorAccess">
+    Vous ne pouvez pas accéder à la page
+</div>
+<?php endif; ?>
 
-    
-
-
-    <?php
-
-
-
-
-?>
+<form method="POST" class="login__form" action="?controller=admin&action=login">
+    <?php 
+    echo $form->input('email', 'adresse email', 'form-group_email');
+    echo $form->input('password', 'mot de passe', 'form-group_password');
+    ?>
+    <button class="addButton" type="submit" name="submit">connexion</button>
+</form>
 
 <?php require_once _ROOTPATH_.'/template/footer.php' ?>

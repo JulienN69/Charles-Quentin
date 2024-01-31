@@ -41,3 +41,18 @@
 .dashboardContent
     width: 100%
     position: relative
+
+    &__title
+        margin: 1rem
+        font-family: nobile
+
+    &__button
+        @include abstracts.button($width: 12rem)
+        margin: 1rem
+
+    &__link
+        @extend .dashboardContent__title
+        font-size: 1.5rem
+
+
+

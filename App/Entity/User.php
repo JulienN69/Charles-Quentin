@@ -7,12 +7,13 @@ class User
     protected int $id;
     protected string $email = "";
     protected string $password;
-    protected string $roles;
+    protected array $roles;
 
     public function __construct()
     {
         $this->email = '';
         $this->password = '';
+        $this->roles = ['admin'];
     }
 
 
@@ -54,6 +55,20 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
 
         return $this;
     }

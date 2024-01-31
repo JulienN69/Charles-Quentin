@@ -1,3 +1,4 @@
+
 function toggleMenu() {
   const menu = document.getElementById("menu");
   const menuBtn = document.querySelector(".menu-hamb");
@@ -10,3 +11,4 @@ function toggleMenu() {
     menuBtn.classList.add("open");
   }
 }
+

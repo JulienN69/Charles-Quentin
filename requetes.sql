@@ -31,11 +31,25 @@ CREATE TABLE photo
 
 CREATE TABLE user
 (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE roles
+(
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE userRoles
+(
+    userId CHAR(36) NOT NULL,
+    roleId INT(11) NOT NULL,
+    PRIMARY KEY (userId, roleId),
+    FOREIGN KEY (userId) REFERENCES users(id),
+    FOREIGN KEY (roleId) REFERENCES roles(id)
+);
 
 -- jeu de données --
 
@@ -100,3 +114,9 @@ VALUES
 ("couple4.jpg", 6),
 ("couple5.jpg", 6),
 ("couple6.jpg", 6);
+
+
+-- mot de passe : photographe
+
+INSERT INTO user (email, password)
+VALUES ("charles_cantin@gmail.com", '$2y$10$0vuo.Ktmpc1A9b1Ejf4JRu74OFqqrgVW6JB/5H3vTbWx69xHk8I9G');

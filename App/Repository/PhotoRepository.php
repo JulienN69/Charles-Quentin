@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use PDO;
 use App\db\Mysql;
-use App\Entity\Gallery;
+use PDOException;
 
 class PhotoRepository 
 {
@@ -19,5 +19,23 @@ class PhotoRepository
         $photos = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $photos;
+    }
+
+    public function findAll()
+    {
+        $mysql = Mysql::getInstance();
+        $pdo = $mysql->getPDO();
+
+        try {
+            $query = $pdo->prepare('SELECT * FROM photo');
+            $query->execute();
+            $photos = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $photos;
+        } catch (PDOException $e) {
+            // Gestion des erreurs ici (affichage, journalisation, etc.)
+            echo "Erreur lors de l'exécution de la requête : " . $e->getMessage();
+            return [];
+        }
     }
 }

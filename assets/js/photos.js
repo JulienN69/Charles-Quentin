@@ -53,9 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ------- condition ternaire un peu longue attention :
       cumulativeTranslation +=
-        window.innerWidth < 1400
-          ? 100 + marginPercentage
-          : 33 + marginPercentage;
+        window.innerWidth < 1400 ? 100 + marginPercentage : 33;
 
       compteur -= 1;
       console.log(compteur);
@@ -77,9 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // ------- condition ternaire un peu longue attention :
       cumulativeTranslation -=
-        window.innerWidth < 1400
-          ? 100 + marginPercentage
-          : 33 + marginPercentage;
+        window.innerWidth < 1400 ? 100 + marginPercentage : 33;
 
       compteur += 1;
       isAnimating = true;

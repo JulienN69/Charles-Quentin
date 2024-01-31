@@ -29,10 +29,10 @@
                     <a href="?controller=admin&action=prestations&subaction=read" class="dashboardMenu__home--link">Prestations</a>
                 </div>
                 <div class="dashboardMenu__items--div">
-                    <a href="?controller=admin&action=gallery" class="dashboardMenu__home--imgLink">
+                    <a href="?controller=admin&action=gallery&subaction=read" class="dashboardMenu__home--imgLink">
                         <img src="assets/images/icons/galerie-dimages.png" alt="image" class="icon">
                     </a>
-                    <a href="?controller=admin&action=gallery" class="dashboardMenu__home--link">Galeries</a>
+                    <a href="?controller=admin&action=gallery&subaction=read" class="dashboardMenu__home--link">Galeries</a>
                 </div>
                 <div class="dashboardMenu__items--div">
                     <a href="#" class="dashboardMenu__home--imgLink">

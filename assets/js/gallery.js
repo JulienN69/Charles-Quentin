@@ -18,7 +18,6 @@ categories.forEach((category) => {
   category.addEventListener("click", async (e) => {
     e.preventDefault();
     const categoryId = category.dataset.categoryId;
-    console.log(categoryId);
     const photos = await loadPhotos(categoryId);
     displayPhotos(photos, categoryId);
   });

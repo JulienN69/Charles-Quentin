@@ -23,12 +23,21 @@ $numberTotalPrestation = count($prestations);
                 <div class="description"><?= $prestation['description'] ?></div>
                 <div class="buttonContainer">
                     <a class="updateButton" href="?controller=admin&action=prestations&subaction=update&id=<?= $prestation['id']; ?>">modifier</a>
-                    <a class="deleteButton" href="#">supprimer</a>
+                    <a class="deleteButton js-modal" href="#">supprimer</a>
                 </div>
             </div>
         <?php } ?>
     </div>
 
+<aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none">
+    <div class="modal-wrapper">
+        <h3 id="titlemodal">Voulez-vous supprimer cette prestation ? (attention tout suppression est définitive)</h3>
+        <div class="modalButtonsContainer">
+            <button type="button" class="addButton">oui</button>
+            <button type="button" class="addButton js-modal-close">non</button>
+        </div>
+    </div>
+</aside>
 
 
 
@@ -36,3 +45,4 @@ $numberTotalPrestation = count($prestations);
 
 </main>
 </body> 
+<script src="assets/js/modal.js"></script>

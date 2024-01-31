@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
-use App\Controller\Admin\AdminPrestationsController;
 use App\Repository\GalleryRepository;
 use App\Repository\PrestationRepository;
+use App\Controller\Admin\AdminGalleryController;
+use App\Controller\Admin\AdminPrestationsController;
 
 class AdminController extends Controller
 {
@@ -17,11 +18,15 @@ class AdminController extends Controller
                 case 'login':
                     $this->login();
                     break;
+                case 'logout':
+                    $this->logout();
+                    break;
                 case 'home':
                     $this->home();
                     break;
                 case 'gallery':
-                    $this->gallery();
+                    $AdminGalleryController = new AdminGalleryController;
+                    $AdminGalleryController->route();
                     break;
                 case 'prestations':
                     $AdminPrestationsController = new AdminPrestationsController;
@@ -40,13 +45,17 @@ class AdminController extends Controller
             'error' => $e->getMessage(),
         ]);
     }
-   
         
     }
 
     protected function login()
     {
         $this->render('admin/login');
+    }
+
+    protected function logout()
+    {
+        $this->render('admin/logout');
     }
 
     protected function home()
@@ -59,23 +68,4 @@ class AdminController extends Controller
         ]);
     }
 
-    protected function gallery()
-    {
-        $galleryRepo = new GalleryRepository;
-        $gallery = $galleryRepo->findAll();
-
-        $this->render('admin/gallery/index', [
-            'gallery' => $gallery
-        ]);
-    }
-
-    protected function prestations()
-    {
-        $prestationsRepo = new PrestationRepository;
-        $prestations = $prestationsRepo->findAll();
-
-        $this->render('admin/prestations/index', [
-            'prestations' => $prestations
-        ]);
-    }
 }

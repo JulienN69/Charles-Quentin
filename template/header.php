@@ -28,11 +28,9 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
-
             <div id="menu" class="menu-link">
                 <a href="?controller=gallery&action=read">Galerie</a>
                 <a href="?controller=contact&action=contact">Contact</a>
                 <a href="?controller=prestation&action=read">Tarif et prestations</a>
             </div>
-
         </header>
