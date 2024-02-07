@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Controller;
+use App\HTML\FileManager;
 use App\Repository\PrestationRepository;
 
 class AdminPrestationsController extends Controller
@@ -63,34 +64,23 @@ class AdminPrestationsController extends Controller
             $price = $_POST['price'];
             $description = $_POST['description'];
 
-
-            if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK){
-
-                $uploadDir = 'C:\xampp\htdocs\charles_cantin\assets\images/';
-
-                $uploadPath = $uploadDir . basename($_FILES['photo']['name']);
-
-                if (move_uploaded_file($_FILES['photo']['tmp_name'], $uploadPath)) {
-                    $photo = $_FILES['photo']['name'];
-                } else {
-                    echo 'Erreur lors du téléchargement du fichier image.';
-                    return;
-                }
-
-            } else {
-                $photo = 'logo.jpg';
+            $fileManager = new FileManager();
+    
+            try {
+                $photo = $fileManager->uploadFile($_FILES['photo']);
+            } catch (\Exception $e) {
+                echo 'Erreur lors du téléchargement du fichier image : ' . $e->getMessage();
             }
-
+    
             $prestationRepository = new PrestationRepository;
             $prestationRepository->createPrestation($title, $price, $description, $photo);
-
+    
             $this->read();
-
         } else {
-
             $this->render('admin/prestations/create');
         }
     }
+    
 
     protected function update()
     {
@@ -103,25 +93,56 @@ class AdminPrestationsController extends Controller
             $this->render('admin/prestations/update', [
                 'prestation' => $prestation
             ]);
-
+    
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $title = $_POST['title'];
+                $price = $_POST['price'];
+                $description = $_POST['description'];
+    
+                $fileManager = new FileManager();
+                $fileUploaded = $fileManager->uploadFile($_FILES['photo']);
+    
+                if ($fileUploaded !== false) { 
+                    $photo = $prestation->getPhoto();
+                    $fileManager->deleteFile($photo);
+                    $updatePrestation = new PrestationRepository;
+                    $updatePrestation->updatePrestation($title, $price, $description, $fileUploaded, $id);
+                    header("Location: admin-prestations"); 
+                } else {
+                    $photo = $prestation->getPhoto();
+                    $updatePrestation = new PrestationRepository;
+                    $updatePrestation->updatePrestation($title, $price, $description, $photo, $id);
+                    header("Location: admin-prestations");
+                }
+            }   
             return;
         }
-    
-        $this->render('admin/prestations/update');
-    }
+        $this->read();
+        }
 
-    protected function delete()
-    {
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-    
-            $prestationRepository = new PrestationRepository;
-            $prestationRepository->deleteById($id);
-
+        protected function delete()
+        {
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+        
+                $prestationRepository = new PrestationRepository;
+                $prestation = $prestationRepository->findOneById($id);
+                
+                $fileManager = new FileManager();
+                try {
+                    $fileManager->deleteFile($prestation->getPhoto());
+                } catch (\Exception $e) {
+                    echo 'Erreur lors de la suppression du fichier : ' . $e->getMessage();
+                    return;
+                }
+        
+                $prestationRepository->deleteById($id);
+        
+                $this->read();
+            }
+        
             $this->read();
         }
-    
-        $this->read();
-    }
+        
     
 }

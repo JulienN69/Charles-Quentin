@@ -55,6 +55,21 @@ class PrestationRepository
         $statement->execute();
     }
 
+    public function updatePrestation(string $title, string $price, string $description, string $photo, int $id):void
+    {
+        $mysql = Mysql::getInstance();
+
+        $pdo = $mysql->getPDO();
+        $statement = $pdo->prepare('UPDATE prestations SET title = :title, price = :price, description = :description, photo = :photo WHERE id = :id ');
+        $statement->bindValue(':title', $title, PDO::PARAM_STR);
+        $statement->bindValue(':price', $price, PDO::PARAM_STR);
+        $statement->bindValue(':description', $description, PDO::PARAM_STR);
+        $statement->bindValue(':photo', $photo, PDO::PARAM_STR);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+    }
+
     public function deleteById(int $id)
     {
         $mysql = Mysql::getInstance();
