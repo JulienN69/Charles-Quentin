@@ -22,23 +22,23 @@ $numberTotalPrestation = count($prestations);
                 <div class="price"><?= $prestation['price'] ?></div>
                 <div class="description"><?= $prestation['description'] ?></div>
                 <div class="buttonContainer">
-                    <a class="updateButton" href="?controller=admin&action=prestations&subaction=update&id=<?= $prestation['id']; ?>">modifier</a>
-                    <a class="deleteButton js-modal" href="#">supprimer</a>
+                    <a class="updateButton" href="admin-prestations-update/<?= $prestation['id']; ?>">modifier</a>
+                    <a class="deleteButton js-modal" href="?controller=admin&action=prestations&subaction=delete&id=<?= $prestation['id']; ?>">supprimer</a>
                 </div>
             </div>
         <?php } ?>
-    </div>
-
-<aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none">
-    <div class="modal-wrapper">
-        <h3 id="titlemodal">Voulez-vous supprimer cette prestation ? (attention tout suppression est définitive)</h3>
-        <div class="modalButtonsContainer">
-            <button type="button" class="addButton">oui</button>
-            <button type="button" class="addButton js-modal-close">non</button>
         </div>
-    </div>
-</aside>
-
+        
+        <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="titlemodal" style="display:none">
+            <div class="modal-wrapper">
+                <h3 id="titlemodal">Voulez-vous supprimer cette prestation ? (attention tout suppression est définitive)</h3>
+                <div class="modalButtonsContainer">
+                    <button type="button" class="addButton js-modal-validate">oui</button>
+                    <button type="button" class="addButton js-modal-close">non</button>
+                </div>
+            </div>
+        </aside>
+        
 
 
 </section>

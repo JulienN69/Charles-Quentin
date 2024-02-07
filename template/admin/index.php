@@ -1,8 +1,23 @@
+<?php
+
+require_once _ROOTPATH_.'/config.php';
+require_once _ROOTPATH_.'/session.php';  
+
+
+if (!isset($_SESSION['user']) || $_SESSION['user']->getRoles() !== ['admin']) {
+    header('Location: ?controller=admin&action=login&forbidden=1');
+    exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="/charles_cantin/">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
@@ -13,20 +28,20 @@
 
 <body>
     <main class="dashboard">
-
+    
         <section class="dashboardMenu">
             <div class="dashboardMenu__home">
                 <a href="?controller=admin&action=home" class="dashboardMenu__home--imgLink">
                     <img src="assets/images/icons/accueil.png" alt="image" class="icon">
                 </a>
-                <a href="?controller=admin&action=home" class="dashboardMenu__home--link">Dashboard</a>
+                <a href="admin" class="dashboardMenu__home--link">Dashboard</a>
             </div>
             <div class="dashboardMenu__items">
                 <div class="dashboardMenu__items--div">
                     <a href="?controller=admin&action=prestations&subaction=read" class="dashboardMenu__home--imgLink">
                         <img src="assets/images/icons/fichier.png" alt="image" class="icon">
                     </a>
-                    <a href="?controller=admin&action=prestations&subaction=read" class="dashboardMenu__home--link">Prestations</a>
+                    <a href="admin-prestations" class="dashboardMenu__home--link">Prestations</a>
                 </div>
                 <div class="dashboardMenu__items--div">
                     <a href="?controller=admin&action=gallery&subaction=read" class="dashboardMenu__home--imgLink">

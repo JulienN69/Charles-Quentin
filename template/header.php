@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <base href="/charles_cantin/">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
@@ -13,14 +14,14 @@
     <body>
         <header class="menu">
             <ul>
-                <li class="menu__li"><a href="?controller=gallery&action=read">Galerie</a></li>
+                <li class="menu__li"><a href="gallery">Galerie</a></li>
                 <li class="menu__li"><a href="?controller=contact&action=contact">Contact</a></li>
             </ul>
-            <a href="?controller=home&action=home" class="menu__li">
+            <a href="home" class="menu__li">
                 <img src="assets\images\logo.jpg" alt="logo" class="menu__li--logo">
             </a>
             <ul>
-                <li class="menu__li"><a href="?controller=prestation&action=read">Tarif et prestations</a></li>
+                <li class="menu__li"><a href="prestations">Tarif et prestations</a></li>
             </ul>
 
             <div class="menu-hamb" onclick="toggleMenu()">
@@ -29,8 +30,8 @@
                 <div class="bar"></div>
             </div>
             <div id="menu" class="menu-link">
-                <a href="?controller=gallery&action=read">Galerie</a>
+                <a href="gallery">Galerie</a>
                 <a href="?controller=contact&action=contact">Contact</a>
-                <a href="?controller=prestation&action=read">Tarif et prestations</a>
+                <a href="prestations">Tarif et prestations</a>
             </div>
         </header>

@@ -8,7 +8,7 @@ class Prestation
     protected string $title;
     protected string $description;
     protected string $price;
-    protected string $photo;
+    protected ?string $photo;
 
     /**
      * Get the value of price

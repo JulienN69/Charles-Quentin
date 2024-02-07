@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Controller;
-use App\Entity\Prestation;
 use App\Repository\PrestationRepository;
 
 class AdminPrestationsController extends Controller
@@ -19,9 +18,9 @@ class AdminPrestationsController extends Controller
                 case 'update':
                     $this->update();
                     break;
-                // case 'delete':
-                //     $this->delete();
-                //     break;
+                case 'delete':
+                    $this->delete();
+                    break;
                 case 'create':
                     $this->create();
                     break;
@@ -59,18 +58,36 @@ class AdminPrestationsController extends Controller
     protected function create()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Récupérer les données du formulaire
+
             $title = $_POST['title'];
             $price = $_POST['price'];
             $description = $_POST['description'];
 
-            // Appeler la méthode du modèle pour créer la prestation
-            // $this->prestationModel->createPrestation($title, $price, $description);
 
-            // Rediriger ou afficher un message de succès, selon vos besoins
-            // ...
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK){
+
+                $uploadDir = 'C:\xampp\htdocs\charles_cantin\assets\images/';
+
+                $uploadPath = $uploadDir . basename($_FILES['photo']['name']);
+
+                if (move_uploaded_file($_FILES['photo']['tmp_name'], $uploadPath)) {
+                    $photo = $_FILES['photo']['name'];
+                } else {
+                    echo 'Erreur lors du téléchargement du fichier image.';
+                    return;
+                }
+
+            } else {
+                $photo = 'logo.jpg';
+            }
+
+            $prestationRepository = new PrestationRepository;
+            $prestationRepository->createPrestation($title, $price, $description, $photo);
+
+            $this->read();
+
         } else {
-            // Afficher le formulaire de création
+
             $this->render('admin/prestations/create');
         }
     }
@@ -91,6 +108,20 @@ class AdminPrestationsController extends Controller
         }
     
         $this->render('admin/prestations/update');
+    }
+
+    protected function delete()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+    
+            $prestationRepository = new PrestationRepository;
+            $prestationRepository->deleteById($id);
+
+            $this->read();
+        }
+    
+        $this->read();
     }
     
 }

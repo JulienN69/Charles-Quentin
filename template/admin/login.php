@@ -12,7 +12,7 @@ $errors = [];
 
 if (!empty($_POST)) {
     $user->setEmail($_POST['email']);
-    $errors['password'] = 'Identifiant ou mot de passe incorrect';
+    $errors['password'] = 'Adresse email ou mot de passe incorrect';
     
     if(!empty($_POST['email']) && !empty($_POST['password'])) {
         $u = new UserRepository;
@@ -53,7 +53,7 @@ $form = new Form($user, $errors);
 </div>
 <?php endif; ?>
 
-<form method="POST" class="login__form" action="?controller=admin&action=login">
+<form method="POST" class="login__form" action="?controller=admin&action=login" onsubmit="validateForm()">
     <?php 
     echo $form->input('email', 'adresse email', 'form-group_email');
     echo $form->input('password', 'mot de passe', 'form-group_password');
@@ -61,4 +61,5 @@ $form = new Form($user, $errors);
     <button class="addButton" type="submit" name="submit">connexion</button>
 </form>
 
+<script src="assets/js/validateForm.js"></script>
 <?php require_once _ROOTPATH_.'/template/footer.php' ?>

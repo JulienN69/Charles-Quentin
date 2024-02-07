@@ -38,4 +38,14 @@ class PhotoRepository
             return [];
         }
     }
+
+    public function deleteById(int $id)
+    {
+        $mysql = Mysql::getInstance();
+
+        $pdo = $mysql->getPDO();
+        $query = $pdo->prepare('DELETE * FROM prestations WHERE id = :id');
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+        $query->execute();
+    }
 }

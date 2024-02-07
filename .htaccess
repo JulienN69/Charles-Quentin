@@ -1,0 +1,19 @@
+RewriteEngine On
+RewriteBase /charles_cantin/
+
+
+
+RewriteRule ^admin$ index.php?controller=admin&action=home [QSA,L]
+RewriteRule ^admin-prestations$ ?controller=admin&action=prestations&subaction=read
+
+RewriteRule ^prestations$ ?controller=prestation&action=read
+RewriteRule ^gallery$ ?controller=gallery&action=read
+
+RewriteRule ^admin-prestations-update/([0-9]+)$ ?controller=admin&action=prestations&subaction=update&id=$1
+
+
+RewriteRule ^home$ ?controller=home&action=home
+
+
+
+
