@@ -14,10 +14,10 @@ class Form
         $this->errors = $errors;
     }
 
-    public function input (string $key, string $label, string $class):string
+    public function input (string $key, string $label, string $class, $value =''):string
     {
 
-        $value = $this->getValue($key);
+        // $value = $this->getValue($key);
         $type = $key === "password" ? "password" : "text";
         return '
         <div class="form-group">

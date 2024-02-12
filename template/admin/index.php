@@ -47,7 +47,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getRoles() !== ['admin']) {
                     <a href="?controller=admin&action=gallery&subaction=read" class="dashboardMenu__home--imgLink">
                         <img src="assets/images/icons/galerie-dimages.png" alt="image" class="icon">
                     </a>
-                    <a href="?controller=admin&action=gallery&subaction=read" class="dashboardMenu__home--link">Galeries</a>
+                    <a href="admin-gallery" class="dashboardMenu__home--link">Galeries</a>
                 </div>
                 <div class="dashboardMenu__items--div">
                     <a href="#" class="dashboardMenu__home--imgLink">

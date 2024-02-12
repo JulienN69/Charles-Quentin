@@ -7,6 +7,7 @@ RewriteRule ^admin$ index.php?controller=admin&action=home [QSA,L]
 RewriteRule ^login$ index.php?controller=admin&action=login
 RewriteRule ^admin-prestations$ ?controller=admin&action=prestations&subaction=read
 RewriteRule ^admin-photos$ ?controller=admin&action=photo&subaction=read
+RewriteRule ^admin-gallery$ ?controller=admin&action=gallery&subaction=read
 RewriteRule ^admin-forbidden$ ?controller=admin&action=login&forbidden=1
 
 RewriteRule ^prestations$ ?controller=prestation&action=read

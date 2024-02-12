@@ -158,9 +158,6 @@ class AdminPrestationsController extends Controller
         }
     }
     
-    
-
-
         protected function delete()
         {
             if (isset($_GET['id'])) {

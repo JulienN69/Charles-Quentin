@@ -32,7 +32,7 @@ const openModal = (e) => {
 
 const closeModal = (e) => {
   if (modal === null) return;
-  e.preventDefault();
+  if (e) e.preventDefault(); // Vérifie si e est défini avant d'appeler preventDefault()
   target.style.display = "none";
   target.setAttribute("aria-hidden", "true");
   target.removeAttribute("aria-modal");

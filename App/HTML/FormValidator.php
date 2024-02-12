@@ -18,6 +18,7 @@ class FormValidator
     {
         $this->validateCSRF();
         $this->validateTitle();
+        $this->validateName();
         $this->validatePrice();
         $this->validateDescription();
 
@@ -28,6 +29,13 @@ class FormValidator
     {
         if (isset($this->data['title']) && strlen($this->data['title']) > 10) {
             $this->errors['title'] = 'Titre trop long, veuillez ne pas dépasser 10 caractères';
+        }
+    }
+
+    private function validateName()
+    {
+        if (isset($this->data['name']) && strlen($this->data['name']) > 20) {
+            $this->errors['title'] = 'Titre trop long, veuillez ne pas dépasser 20 caractères';
         }
     }
 
