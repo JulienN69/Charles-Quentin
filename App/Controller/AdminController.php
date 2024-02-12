@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Controller\Controller;
 use App\Repository\GalleryRepository;
 use App\Repository\PrestationRepository;
+use App\Controller\Admin\AdminPhotoController;
 use App\Controller\Admin\AdminGalleryController;
 use App\Controller\Admin\AdminPrestationsController;
 
@@ -31,6 +32,10 @@ class AdminController extends Controller
                 case 'prestations':
                     $AdminPrestationsController = new AdminPrestationsController;
                     $AdminPrestationsController->route();
+                    break;
+                case 'photo':
+                    $AdminPhotoController = new AdminPhotoController;
+                    $AdminPhotoController->route();
                     break;
                 default:
                     throw new \Exception("cette action n'existe pas :".$_GET['action']);

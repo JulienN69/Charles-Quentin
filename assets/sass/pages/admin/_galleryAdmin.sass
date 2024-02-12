@@ -1,4 +1,8 @@
-.miniature-container
+@use "../../abstracts/_all" as abstracts
+    
+.miniatures-container
     display: flex
     justify-content: space-between
-    
+    @include abstracts.max-width(1000px)
+        display: none 
+

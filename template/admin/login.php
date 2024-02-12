@@ -38,7 +38,6 @@ if (!empty($_POST)) {
     } 
 } 
 
-var_dump($user);
 $form = new Form($user, $errors);
 
 ?>

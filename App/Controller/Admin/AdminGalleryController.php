@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Controller\Controller;
+use App\Entity\Gallery;
+use App\HTML\Form;
 use App\Repository\GalleryRepository;
 use App\Repository\PhotoRepository;
 
@@ -22,9 +24,9 @@ class AdminGalleryController extends Controller
                 // case 'delete':
                 //     $this->delete();
                 //     break;
-                // case 'create':
-                //     $this->create();
-                //     break;
+                case 'create':
+                    $this->create();
+                    break;
                 default:
                     throw new \Exception("cette action n'existe pas :".$_GET['action']);
                 break;
@@ -54,35 +56,38 @@ class AdminGalleryController extends Controller
         $photosRepo = new PhotoRepository;
         $photos = $photosRepo->findAll();
     
-        // foreach ($gallery as $gall) {
-        //     $photosRepo = new PhotoRepository;
-        //     $photos[] = $photosRepo->findAllByGalleryId($gall['id']);
-        // }
-    
         $this->render('admin/gallery/index', [
             'gallery' => $gallery,
             'photos' => $photos
         ]);
     }
 
-    // protected function create()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         // Récupérer les données du formulaire
-    //         $title = $_POST['title'];
-    //         $price = $_POST['price'];
-    //         $description = $_POST['description'];
+    protected function create()
+    {
+        $errors = [];
+        $gallery = new Gallery;
+        $form = new Form($gallery, $errors);
 
-    //         // Appeler la méthode du modèle pour créer la prestation
-    //         // $this->prestationModel->createPrestation($title, $price, $description);
+        $this->render('admin/gallery/create', [
+            'form' => $form,
+        ]);
 
-    //         // Rediriger ou afficher un message de succès, selon vos besoins
-    //         // ...
-    //     } else {
-    //         // Afficher le formulaire de création
-    //         $this->render('admin/prestations/create');
-    //     }
-    // }
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //     // Récupérer les données du formulaire
+        //     $title = $_POST['title'];
+        //     $price = $_POST['price'];
+        //     $description = $_POST['description'];
+
+        //     // Appeler la méthode du modèle pour créer la prestation
+        //     // $this->prestationModel->createPrestation($title, $price, $description);
+
+        //     // Rediriger ou afficher un message de succès, selon vos besoins
+        //     // ...
+        // } else {
+        //     // Afficher le formulaire de création
+        //     $this->render('admin/prestations/create');
+        // }
+    }
 
     // protected function update()
     // {

@@ -4,8 +4,14 @@ namespace App\Entity;
 
 class Gallery 
 {
-    protected int $gallery_id;
-    protected string $name;
+    protected ?int $gallery_id;
+    protected ?string $name;
+
+    public function __construct($gallery_id = null, $name = null)
+    {
+        $this->name = $name;
+        $this->gallery_id = $gallery_id;
+    }
     
 
     /**

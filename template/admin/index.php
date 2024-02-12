@@ -5,7 +5,7 @@ require_once _ROOTPATH_.'/session.php';
 
 
 if (!isset($_SESSION['user']) || $_SESSION['user']->getRoles() !== ['admin']) {
-    header('Location: ?controller=admin&action=login&forbidden=1');
+    header('Location: admin-forbidden');
     exit;
 }
 
@@ -26,10 +26,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getRoles() !== ['admin']) {
         <title>Charles Quentin</title>
     </head>
 
-<body>
+<body class="<?= isset($bodyClass) ? $bodyClass : '' ?>">
     <main class="dashboard">
     
-        <section class="dashboardMenu">
+        <section class="dashboardMenu <?= isset($menuClass) ? $menuClass : '' ?>">
             <div class="dashboardMenu__home">
                 <a href="?controller=admin&action=home" class="dashboardMenu__home--imgLink">
                     <img src="assets/images/icons/accueil.png" alt="image" class="icon">
@@ -53,7 +53,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getRoles() !== ['admin']) {
                     <a href="#" class="dashboardMenu__home--imgLink">
                         <img src="assets/images/icons/camera.png" alt="image" class="icon">
                     </a>
-                    <a href="#" class="dashboardMenu__home--link">Photos</a>
+                    <a href="admin-photos" class="dashboardMenu__home--link">Photos</a>
                 </div>
             </div>
 

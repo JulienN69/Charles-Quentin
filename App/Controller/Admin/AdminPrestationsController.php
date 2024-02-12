@@ -2,8 +2,11 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\Controller;
+require_once _ROOTPATH_.'/session.php';
+
 use App\HTML\FileManager;
+use App\HTML\FormValidator;
+use App\Controller\Controller;
 use App\Repository\PrestationRepository;
 
 class AdminPrestationsController extends Controller
@@ -56,69 +59,107 @@ class AdminPrestationsController extends Controller
         ]);
     }
 
+
     protected function create()
     {
+        $errors = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            $formValidator = new FormValidator($_POST, $_SESSION);
+            $errors = $formValidator->validate();
 
-            $title = $_POST['title'];
-            $price = $_POST['price'];
-            $description = $_POST['description'];
+            if (empty($errors)) {
 
-            $fileManager = new FileManager();
-    
-            try {
-                $photo = $fileManager->uploadFile($_FILES['photo']);
-            } catch (\Exception $e) {
-                echo 'Erreur lors du téléchargement du fichier image : ' . $e->getMessage();
-            }
-    
-            $prestationRepository = new PrestationRepository;
-            $prestationRepository->createPrestation($title, $price, $description, $photo);
-    
-            $this->read();
-        } else {
-            $this->render('admin/prestations/create');
-        }
+                $title = $_POST['title'];
+                $price = $_POST['price'];
+                $description = $_POST['description'];
+
+                $fileManager = new FileManager();
+
+                $fileUploadResult = $fileManager->uploadFile($_FILES['photo']);
+
+                if (is_array($fileUploadResult)) {
+ 
+                    $errors['photo'] = implode('<br>', $fileUploadResult);
+                } else if ($fileUploadResult === false) {                   
+                    $errors['photo'] = 'Erreur lors du téléchargement du fichier image.';
+                }
+        
+                if (empty($errors)) {
+                    $title = $_POST['title'];
+                    $price = $_POST['price'];
+                    $description = $_POST['description'];
+                    $photo = $fileUploadResult; 
+        
+                    $prestationRepository = new PrestationRepository;
+                    $prestationRepository->createPrestation($title, $price, $description, $photo);
+        
+                    $this->read();
+                }
+            }       
+            $this->render('admin/prestations/create', ['errors' => $errors]);
+        } 
+        $this->render('admin/prestations/create', ['errors' => $errors]);
     }
-    
+
 
     protected function update()
     {
+        $errors = [];
+    
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
     
             $prestationRepository = new PrestationRepository;
             $prestation = $prestationRepository->findOneById($id);
     
-            $this->render('admin/prestations/update', [
-                'prestation' => $prestation
-            ]);
-    
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $title = $_POST['title'];
-                $price = $_POST['price'];
-                $description = $_POST['description'];
+                $formValidator = new FormValidator($_POST, $_SESSION);
+                $errors = $formValidator->validate();
     
-                $fileManager = new FileManager();
-                $fileUploaded = $fileManager->uploadFile($_FILES['photo']);
+                // Vérifier si un fichier a été téléchargé
+                if (!empty($_FILES['photo']['name'])) {
+                    $fileManager = new FileManager();
+                    $fileUploadResult = $fileManager->uploadFile($_FILES['photo']);
     
-                if ($fileUploaded !== false) { 
-                    $photo = $prestation->getPhoto();
-                    $fileManager->deleteFile($photo);
-                    $updatePrestation = new PrestationRepository;
-                    $updatePrestation->updatePrestation($title, $price, $description, $fileUploaded, $id);
-                    header("Location: admin-prestations"); 
+                    if (is_array($fileUploadResult)) {
+                        $errors['photo'] = implode('<br>', $fileUploadResult);
+                    } else if ($fileUploadResult === false) {
+                        $errors['photo'] = 'Erreur lors du téléchargement du fichier image.';
+                    } else {
+                        // Mise à jour de la photo seulement si un nouveau fichier a été téléchargé
+                        $photo = $fileUploadResult;
+                    }
                 } else {
+                    // Aucun fichier téléchargé, garder la photo actuelle
                     $photo = $prestation->getPhoto();
-                    $updatePrestation = new PrestationRepository;
-                    $updatePrestation->updatePrestation($title, $price, $description, $photo, $id);
-                    header("Location: admin-prestations");
                 }
-            }   
-            return;
+    
+                if (empty($errors)) {
+                    $title = $_POST['title'];
+                    $price = $_POST['price'];
+                    $description = $_POST['description'];
+    
+                    // Mettre à jour la prestation
+                    $prestationRepository->updatePrestation($title, $price, $description, $photo, $id);
+    
+                    // Redirection après la mise à jour
+                    header('Location: admin-prestations');
+                    exit;
+                }
+            }
+    
+            // Afficher le formulaire de mise à jour avec les erreurs éventuelles
+            $this->render('admin/prestations/update', [
+                'prestation' => $prestation,
+                'errors' => $errors
+            ]);
         }
-        $this->read();
-        }
+    }
+    
+    
+
 
         protected function delete()
         {

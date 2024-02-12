@@ -1,0 +1,122 @@
+@use "../../abstracts/_all" as abstracts
+    
+.adminBody
+    height: 100%
+    overflow: scroll
+
+.adminMenu
+    height: auto
+
+.galleryPhoto 
+    padding: 20px
+
+    &__title
+        font-family: nobile
+        text-align: center
+        text-transform: uppercase
+        font-weight: initial
+        font-size: 2rem
+
+.galleryPhoto__button--container
+    text-align: center
+    margin-bottom: 20px
+
+    a
+        @include abstracts.button($font-size: 1.5rem, $width: 12rem, $padding: 0.5rem)
+        margin: 0 20px
+
+
+.categoryPhoto 
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+    grid-gap: 20px
+
+    div
+        h3
+            @extend .galleryPhoto__title
+            font-size: 1.2rem
+
+    &__grid 
+        position: relative
+        
+
+.mini 
+    width: 100%
+    height: auto
+    border-radius: 8px
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+    transition: transform 0.3s ease
+
+    &:hover
+        transform: scale(1.1)
+
+.delete-overlay 
+    position: absolute
+    top: 8px
+    right: 8px
+    opacity: 0
+    transition: opacity 0.3s ease
+
+
+.categoryPhoto__grid:hover .delete-overlay 
+    opacity: 1
+
+.delete-button 
+    background: none
+    border: none
+    padding: 0
+    cursor: pointer
+
+    svg
+        width: 24px
+        height: 24px
+        fill: #fff
+
+.formPhoto
+    display: flex
+    flex-direction: column
+    align-items: center
+    font-size: 1.2rem
+
+    &__button
+        border: none
+        background: none
+        margin: 10px
+        padding: 0
+        font-size: 1.4rem
+        text-decoration: none
+        cursor: pointer
+        color: #000
+        transition: text-decoration 0.3s
+        &:hover
+            text-decoration: underline
+
+.custom-file-input 
+    position: relative
+    overflow: hidden
+    padding: 10px 20px
+    cursor: pointer
+    background-color: rgba(167, 118, 24, 1)
+    color: #fff
+    border: none
+    border-radius: 5px
+    transition: background-color 0.3s
+    text-transform: uppercase
+    &:hover 
+        background-color: darken(rgba(167, 118, 24, 1) ,10%)
+    
+
+    /* Style de l'input réel */
+.custom-file-input input[type=file] 
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 100%
+    opacity: 0
+    cursor: pointer
+    
+
+    
