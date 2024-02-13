@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nobile:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/sass/css/main.css">
-        <title>Charles Quentin</title>
+        <title>Charles Cantin</title>
     </head>
     <body>
         <header class="menu">

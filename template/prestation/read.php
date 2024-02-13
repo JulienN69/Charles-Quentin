@@ -6,18 +6,19 @@
 <div class="prestation-grid-container">
 
 <?php
-
 foreach ($prestations as $prestation) {
-    echo '<div class="prestation-grid-container__item">';
-    echo '<img src="assets/images/' . $prestation['photo'] . '" alt="image">';
-    echo '<div class="prestation-grid-container__item__text">';
-    echo '<span class="prestation-grid-container__item__text--title">' . $prestation['title'] . '</span>';
-    echo '<span class="prestation-grid-container__item__text--prices">' . $prestation['price']. '</span>';
-    echo '</div>';
-    echo '<div class="prestation-grid-container__item__description">';
-    echo '<p class="prestation-grid-container__item__description--p">' . $prestation['description'] . '</p>';
-    echo '</div>';
-    echo '</div>';
+    ?>
+    <div class="prestation-grid-container__item">
+        <img src="assets/images/<?= $prestation['photo'] ?>" alt="image">
+        <div class="prestation-grid-container__item__text">
+            <span class="prestation-grid-container__item__text--title"><?=  $prestation['title'] ?></span>
+            <span class="prestation-grid-container__item__text--prices"><?=  $prestation['price'] ?></span>
+        </div>
+        <div class="prestation-grid-container__item__description">
+            <p class="prestation-grid-container__item__description--p"><?=  $prestation['description'] ?></p>
+        </div>
+    </div>
+    <?php
 }
 ?>
 

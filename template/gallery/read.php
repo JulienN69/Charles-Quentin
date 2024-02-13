@@ -36,13 +36,9 @@
                     <a class="arrow-js-left">&gt;</a>
                 </div>
             </div>
-            
-
         </div>
     </section>
-
 </main>
-
             <footer class="footer">
                 <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45" height="45" viewBox="0 0 50 50" fill="black">

@@ -1,0 +1,71 @@
+@use "../abstracts/_all" as abstracts
+
+.contact-cover
+    @include abstracts.coverImage($opacity: 0.4)
+
+    &__container
+        @include abstracts.position($top: 66%)
+        height: 100vh
+        margin: 0
+        text-align: center
+        width: 50%
+        @include abstracts.max-width(1200px)
+            width: 80%
+        @include abstracts.max-width(500px)
+            width: 90%
+    
+.form-contact 
+    max-width: 600px
+    margin: 50px auto
+    background-color: #fff
+    padding: 20px
+    border-radius: 8px
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+
+
+    &__title
+        margin-top: 0
+        font-size: 24px
+        text-align: center
+
+    &__container 
+        padding: 20px
+        box-sizing: border-box
+
+        &--div
+            display: flex
+            justify-content: space-between
+
+    &__group 
+        margin-bottom: 20px
+        width: 100%
+
+        label
+            display: block
+            font-weight: bold
+            margin-bottom: 5px
+
+        input[type="text"], input[type="email"], input[type="tel"], textarea
+            width: 100%
+            padding: 10px
+            border: 1px solid #ccc
+            border-radius: 5px
+            box-sizing: border-box
+            &:focus
+                border: 2px solid abstracts.$colorBrown
+                outline: none
+
+        textarea 
+            height: 100px
+
+        input[type="submit"] 
+            background-color: abstracts.$colorBrown
+            color: #fff
+            border: none
+            border-radius: 5px
+            padding: 10px 20px
+            cursor: pointer
+            font-size: 16px
+            &:hover
+                background-color: darken(abstracts.$colorBrown ,20%)
+
