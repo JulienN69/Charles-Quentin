@@ -11,7 +11,7 @@ define('BASE_URL', 'https://charles-cantin-nesme-f6af6cc1162d.herokuapp.com/');
 
 // use App\Controller\Controller;
 
-$controller = '\\' . str_replace(DIRECTORY_SEPARATOR, '\\', $controller);
+// $controller = '\\' . str_replace(DIRECTORY_SEPARATOR, '\\', $controller);
 
 $controller = new Controller();
 $controller->route();
