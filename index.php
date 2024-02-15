@@ -16,9 +16,16 @@ spl_autoload_register(function ($class) {
 echo 'page chargé';
 
 define('_ROOTPATH_', __DIR__);
+echo _ROOTPATH_;
 define('BASE_URL', 'https://charles-cantin-nesme-f6af6cc1162d.herokuapp.com/');
+echo BASE_URL;
 
 use App\Controller\Controller;
+
+echo __DIR__ . '/App/Controller/Controller.php';
+
+var_dump(file_get_contents(__DIR__ . '/vendor/autoload.php'));
+
 
 $controller = new Controller();
 echo 'Controller chargé';
