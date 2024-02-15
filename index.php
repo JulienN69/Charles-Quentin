@@ -22,14 +22,12 @@ echo BASE_URL;
 
 use App\Controller\Controller;
 
-echo __DIR__ . '/App/Controller/Controller.php';
+echo __DIR__ . '/App/Controller/Controller.php' . '    ';
 
-var_dump(file_get_contents(__DIR__ . '/vendor/autoload.php'));
+var_dump(file_get_contents(__DIR__ . '/vendor/autoload.php' . '    '));
 
 
 $controller = new Controller();
-echo 'Controller chargé';
-var_dump($controller) ;
 // $controller->route();
 
 
