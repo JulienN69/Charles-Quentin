@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 // require 'App/Controller/Controller.php';
 // spl_autoload_register(function ($class) {
 //     $class = str_replace('\\', '/', $class);
