@@ -1,8 +1,10 @@
 <?php
 require 'vendor/autoload.php';
 
+echo 'page chargé';
+
 define('_ROOTPATH_', __DIR__);
-define('BASE_URL', 'https://vast-coast-14611-21c322dd0d31.herokuapp.com/');
+define('BASE_URL', 'https://charles-cantin-nesme-f6af6cc1162d.herokuapp.com/');
 
 use App\Controller\Controller;
 
