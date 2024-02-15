@@ -1,6 +1,6 @@
 <?php
-// require 'vendor/autoload.php';
-require 'App/Controller/Controller.php';
+require 'vendor/autoload.php';
+// require 'App/Controller/Controller.php';
 
 echo 'page chargé';
 
@@ -11,6 +11,7 @@ use App\Controller\Controller;
 
 $controller = new Controller();
 echo 'Controller chargé';
+var_dump($controller) ;
 $controller->route();
 
 
