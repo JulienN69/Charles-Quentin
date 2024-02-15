@@ -28,7 +28,7 @@ var_dump(file_get_contents(__DIR__ . '/vendor/autoload.php'));
 
 
 $controller = new Controller();
-// $controller->route();
+$controller->route();
 
 
 // define('BASE_URL', 'http://localhost/charles_cantin');
