@@ -1,7 +1,7 @@
+
 -- creation de la bdd --
 
-CREATE DATABASE charles_cantin; 
-
+CREATE DATABASE charles_cantin;
 USE charles_cantin;
 
 -- creation des tables --
@@ -24,7 +24,7 @@ CREATE TABLE photo
 (
     photo_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
-    size VARCHAR(255) NOT NULL,
+    size VARCHAR(255),
     gallery_id INT NOT NULL,
     FOREIGN KEY (gallery_id) REFERENCES gallery(gallery_id)
 );

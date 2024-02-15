@@ -15,6 +15,10 @@ class Controller
         try {
             if (isset($_GET['controller'])){
                 switch ($_GET['controller']){
+                    case 'prestation':
+                        $prestationController = new PrestationController;
+                        $prestationController->route();
+                        break;
                     case 'gallery':
                         $galleryController = new GalleryController;
                         $galleryController->route();
@@ -26,10 +30,6 @@ class Controller
                     case 'home':
                         $homeController = new HomeController;
                         $homeController->route();
-                        break;
-                    case 'prestation':
-                        $prestationController = new PrestationController;
-                        $prestationController->route();
                         break;
                     case 'admin':
                         $adminController = new AdminController;

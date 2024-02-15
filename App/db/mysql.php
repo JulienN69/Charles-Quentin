@@ -11,11 +11,11 @@ class Mysql
     private $db_host;
     private $pdo;
     private static $_instance = null;
-
+    
     private function __construct()
     {
         $conf = require_once _ROOTPATH_.'/config.php';
-
+        
         if (isset ($conf['db_name'])){
             $this->db_name = $conf['db_name'];
         } 

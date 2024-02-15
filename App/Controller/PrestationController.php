@@ -36,6 +36,7 @@ class PrestationController extends Controller
     {
         $prestationsRepository = new PrestationRepository;
         $prestations = $prestationsRepository->findAll();
+        
         $this->render('prestation/read', [
             'prestations' => $prestations
         ]);
