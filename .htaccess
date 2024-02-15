@@ -1,6 +1,6 @@
 RewriteEngine On
 # RewriteBase /charles_cantin/
-RewriteBase /
+RewriteBase app/
 
 
 
