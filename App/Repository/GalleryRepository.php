@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-require '../Db/Mysql.php';
+require '../../vendor/autoload.php';
 
 use PDO;
 use App\Db\Mysql;
