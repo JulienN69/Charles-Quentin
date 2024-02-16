@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+require '../Db/Mysql.php';
+
 use PDO;
 use App\Db\Mysql;
 use PDOException;

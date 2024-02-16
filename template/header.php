@@ -15,7 +15,7 @@
         <header class="menu">
             <ul>
                 <li class="menu__li"><a href="gallery">Galerie</a></li>
-                <li class="menu__li"><a href="?controller=contact&action=contact">Contact</a></li>
+                <li class="menu__li"><a href="contact">Contact</a></li>
             </ul>
             <a href="home" class="menu__li">
                 <img src="assets\images\logo.jpg" alt="logo" class="menu__li--logo">
