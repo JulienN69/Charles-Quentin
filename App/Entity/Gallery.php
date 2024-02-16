@@ -31,7 +31,7 @@ class Gallery
     {
         $this->gallery_id = $gallery_id;
 
-        return $this;
+        return $this; 
     }
 
     /**
