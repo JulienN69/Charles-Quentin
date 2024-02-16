@@ -16,12 +16,6 @@ class GalleryController extends Controller
                 case 'read':
                     $this->read(); 
                     break;
-                case 'contact':
-
-                    break;
-                default:
-
-                break;
             }
         } else {
             
@@ -48,8 +42,6 @@ class GalleryController extends Controller
             echo json_encode($photos);
             exit;
         }
-
-
 
         $galleryRepository = new GalleryRepository;
         $gallery = $galleryRepository->findAll();

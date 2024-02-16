@@ -31,7 +31,7 @@
             </div>
             <div id="menu" class="menu-link">
                 <a href="gallery">Galerie</a>
-                <a href="?controller=contact&action=contact">Contact</a>
+                <a href="contact">Contact</a>
                 <a href="prestations">Tarif et prestations</a>
             </div>
         </header>

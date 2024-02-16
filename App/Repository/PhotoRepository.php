@@ -5,7 +5,7 @@ namespace App\Repository;
 use PDO;
 use Photo;
 use Exception;
-use App\db\Mysql;
+use App\Db\Mysql;
 use PDOException;
 use App\Tools\StringTools;
 

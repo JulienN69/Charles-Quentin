@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use PDO;
-use App\db\Mysql;
+use App\Db\Mysql;
 use PDOException;
 use App\Entity\Gallery;
 use App\Tools\StringTools;
