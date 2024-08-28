@@ -33,8 +33,6 @@ VALUES ("charles_cantin@gmail.com", '$2y$10$0vuo.Ktmpc1A9b1Ejf4JRu74OFqqrgVW6JB/
 
 Lancez l'application en utilisant un logiciel comme Xamp ou avec le serveur dédié de PHP à l'aide de la commande "php -S localhost:3306 -t /chemin/vers/application"<br>
 Depuis la page d'accueil du site, ajoutez /login dans la barre d'adresse du navigateur. Cela vous permettra d'accéder au formulaire de connexion pour Charles Cantin.<br>
-identifiant : charles_cantin@gmail.com<br>
-mot de passe : photographe<br>
 <br>
 Vous pouvez ensuite accéder à l'interface de l'administration en ajoutant /admin dans la barre d'adresse du navigateur, depuis la page d'accueil.
 
